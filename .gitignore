@@ -1,0 +1,15 @@
+.claude/
+.vscode/
+
+# Secrets
+.secrets/
+
+# Local config
+.clasp.json
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
