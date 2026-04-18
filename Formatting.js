@@ -21,7 +21,7 @@ function writeInfoSheet(ss, heroStatsSheet) {
   const githubText = "Code on Github";
   infoSheet.getRange(4, 1).setRichTextValue(
     SpreadsheetApp.newRichTextValue().setText(githubText)
-      .setLinkUrl("Code on ".length, githubText.length, "").build()
+      .setLinkUrl("Code on ".length, githubText.length, "https://github.com/Vergir/DeadlockScripts").build()
   );
   infoSheet.autoResizeColumn(1);
 }
