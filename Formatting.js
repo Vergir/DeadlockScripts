@@ -24,6 +24,11 @@ function writeInfoSheet(ss, heroStatsSheet) {
       .setLinkUrl("Code on ".length, githubText.length, "https://github.com/Vergir/DeadlockScripts").build()
   );
   infoSheet.autoResizeColumn(1);
+
+  ss.setActiveSheet(heroStatsSheet);
+  ss.moveActiveSheet(1);
+  ss.setActiveSheet(infoSheet);
+  ss.moveActiveSheet(2);
 }
 
 function writeHeroStatsSheet(sheet, allRows, heroNames, baseHeaders, baseMap, scaledMap,
