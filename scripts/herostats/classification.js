@@ -1,13 +1,5 @@
 const BLOCK = { RELATIVE: 0, LITERAL: 1, OUTLIER: 2, RAW: 3 };
 
-const OUTLIER_STATS = new Set([
-  "Bullets Per Shot",
-  "Bullets Per Burst",
-  "Time Between Bursted Bullets (s)",
-  "Rounds Per Second At Max Spin",
-  "Spin Acceleration",
-  "Spin Deceleration",
-]);
 
 function detectCollapsedStats(statCols, heroNames, baseMap, scaledMap) {
   const collapsed = new Set();
@@ -58,7 +50,12 @@ function classifyStats(statCols, heroNames, baseMap, scaledMap) {
     collapsedStats,
     relativeStats: statCols.filter(s => statBlockMap[s] === BLOCK.RELATIVE),
     literalStats:  statCols.filter(s => statBlockMap[s] === BLOCK.LITERAL),
-    outlierStats:  statCols.filter(s => statBlockMap[s] === BLOCK.OUTLIER),
+    outlierStats:  statCols.filter(s => statBlockMap[s] === BLOCK.OUTLIER)
+                           .sort((a, b) => {
+                             const ai = OUTLIER_DISPLAY_ORDER.indexOf(a);
+                             const bi = OUTLIER_DISPLAY_ORDER.indexOf(b);
+                             return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+                           }),
     allSameBase,
     allSameScaled,
   };
